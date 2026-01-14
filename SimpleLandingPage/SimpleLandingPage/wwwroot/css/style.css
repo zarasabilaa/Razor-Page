@@ -1,0 +1,196 @@
+/* ==========================================================================
+   1. Global Styles & Variables
+   ========================================================================== */
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3a0ca3;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* */
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* */
+    color: var(--dark-color); /* */
+    padding-top: 76px; /* Memberi ruang untuk fixed navbar */
+}
+
+section {
+    scroll-margin-top: 80px; /* Jarak scroll agar judul tidak tertutup navbar */
+}
+
+/* ==========================================================================
+   2. Navbar Styles
+   ========================================================================== */
+.navbar {
+    padding: 1rem 0; /* */
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500; /* */
+    margin: 0 0.5rem; /* */
+    position: relative; /* */
+    transition: color 0.3s ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: var(--primary-color); /* */
+    }
+
+    /* Navbar Underline Animation */
+    .navbar-nav .nav-link::after {
+        content: ''; /* */
+        position: absolute; /* */
+        bottom: 0; /* */
+        left: 0; /* */
+        width: 0; /* */
+        height: 2px; /* */
+        background-color: var(--primary-color); /* */
+        transition: width 0.3s ease; /* */
+    }
+
+    .navbar-nav .nav-link:hover::after {
+        width: 100%; /* */
+    }
+
+/* ==========================================================================
+   3. Hero Section
+   ========================================================================== */
+.hero-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* */
+    min-height: calc(100vh - 76px); /* */
+    display: flex; /* */
+    align-items: center; /* */
+}
+
+    .hero-section h1 {
+        color: var(--dark-color); /* */
+        line-height: 1.2; /* */
+    }
+
+    .hero-section .lead {
+        font-size: 1.25rem; /* */
+        color: #666; /* */
+    }
+
+/* Floating Animation for Hero Icon */
+.hero-image i {
+    opacity: 0.9; /* */
+    animation: float 3s ease-in-out infinite; /* */
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0); /* */
+    }
+
+    50% {
+        transform: translateY(-20px); /* */
+    }
+}
+
+/* ==========================================================================
+   4. About & Services Section
+   ========================================================================== */
+.about-image i {
+    opacity: 0.8; /* */
+}
+
+.service-icon {
+    transition: transform 0.3s ease; /* */
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* */
+}
+
+    .card:hover {
+        transform: translateY(-5px); /* */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important; /* */
+    }
+
+        .card:hover .service-icon {
+            transform: scale(1.1); /* */
+        }
+
+/* ==========================================================================
+   5. Portfolio Section
+   ========================================================================== */
+.portfolio-item {
+    position: relative; /* */
+    overflow: hidden; /* */
+}
+
+    .portfolio-item img {
+        transition: transform 0.5s ease; /* */
+    }
+
+    .portfolio-item:hover img {
+        transform: scale(1.05); /* */
+    }
+
+/* ==========================================================================
+   6. Contact Form
+   ========================================================================== */
+.contact-form .form-control {
+    padding: 0.75rem 1rem; /* */
+    border: 2px solid #e9ecef; /* */
+    border-radius: 0.5rem; /* */
+    transition: all 0.3s ease; /* */
+}
+
+    .contact-form .form-control:focus {
+        border-color: var(--primary-color); /* */
+        box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25); /* */
+    }
+
+.contact-form button {
+    font-weight: 500; /* */
+    transition: all 0.3s ease; /* */
+}
+
+    .contact-form button:hover {
+        background-color: var(--secondary-color); /* */
+        transform: translateY(-2px); /* */
+    }
+
+/* ==========================================================================
+   7. Footer Styles
+   ========================================================================== */
+footer {
+    background-color: var(--dark-color) !important; /* */
+}
+
+.social-icons a {
+    transition: color 0.3s ease; /* */
+}
+
+    .social-icons a:hover {
+        color: var(--primary-color) !important; /* */
+    }
+
+/* ==========================================================================
+   8. Responsive Design
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem; /* */
+    }
+
+    .hero-section .lead {
+        font-size: 1.1rem; /* */
+    }
+
+    .hero-image i {
+        font-size: 200px !important; /* */
+    }
+}

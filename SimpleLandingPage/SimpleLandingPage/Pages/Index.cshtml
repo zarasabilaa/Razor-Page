@@ -1,0 +1,170 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Landing Page Sederhana";
+}
+
+<section id="home" class="hero-section py-5">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">@Model.WelcomeMessage</h1>
+                <p class="lead mb-4">@Model.Tagline</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#contact" class="btn btn-primary btn-lg px-4 py-3">
+                        <i class="fas fa-envelope me-2"></i>Hubungi Kami
+                    </a>
+                    <a href="#services" class="btn btn-outline-primary btn-lg px-4 py-3">
+                        <i class="fas fa-list me-2"></i>Lihat Layanan
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="hero-image mt-5 mt-lg-0">
+                    <i class="fas fa-laptop-code text-primary" style="font-size: 300px;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-4">Tentang Kami</h2>
+                <p class="mb-4">
+                    Kami adalah tim profesional yang berdedikasi untuk memberikan solusi digital terbaik.
+                    Dengan pengalaman lebih dari 5 tahun, kami telah membantu berbagai bisnis tumbuh melalui teknologi yang tepat.
+                </p>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Pengalaman lebih dari 5 tahun</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Tim profesional dan bersertifikat</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Dukungan 24/7 untuk klien</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Harga kompetitif dan transparan</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="about-image">
+                    <i class="fas fa-users text-primary" style="font-size: 250px;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="py-5">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3">Layanan Kami</h2>
+            <p class="text-muted">Kami menyediakan berbagai layanan digital untuk kebutuhan bisnis Anda.</p>
+        </div>
+        <div class="row g-4">
+            @foreach (var service in Model.Services)
+            {
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon mb-3">
+                                <i class="@service.Icon fa-3x text-primary"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">@service.Title</h5>
+                            <p class="card-text text-muted">@service.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section id="portfolio" class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3">Portfolio Kami</h2>
+            <p class="text-muted">Beberapa project yang telah kami selesaikan.</p>
+        </div>
+        <div class="row g-4">
+            @foreach (var item in Model.PortfolioItems)
+            {
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm">
+                        <img src="@item.ImageUrl" class="card-img-top" alt="@item.Title">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Title</h5>
+                            <span class="badge bg-primary">@item.Category</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-5">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h2 class="fw-bold mb-4">Hubungi Kami</h2>
+                <p class="mb-4">Tertarik bekerja sama? Hubungi kami untuk konsultasi gratis. Kami akan membalas pesan Anda dalam waktu 24 jam.</p>
+                <div class="contact-info">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-map-marker-alt text-primary me-3 fa-lg"></i>
+                        <div>
+                            <h6 class="fw-bold mb-1">Alamat</h6>
+                            <p class="mb-0">Jl. Teknologi No. 123, Jakarta</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-phone text-primary me-3 fa-lg"></i>
+                        <div>
+                            <h6 class="fw-bold mb-1">Telepon</h6>
+                            <p class="mb-0">(021) 1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-envelope text-primary me-3 fa-lg"></i>
+                        <div>
+                            <h6 class="fw-bold mb-1">Email</h6>
+                            <p class="mb-0">info@landingpage.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                @if (Model.IsSubmitted)
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fas fa-check-circle me-2"></i>
+                        Terima kasih! Pesan Anda telah berhasil dikirim.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+                <form method="post" class="contact-form">
+                    <div class="mb-3">
+                        <label asp-for="Contact.Name" class="form-label">Nama Lengkap</label>
+                        <input asp-for="Contact.Name" class="form-control" placeholder="Masukkan nama Anda">
+                        <span asp-validation-for="Contact.Name" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Contact.Email" class="form-label">Email</label>
+                        <input asp-for="Contact.Email" class="form-control" placeholder="nama@email.com">
+                        <span asp-validation-for="Contact.Email" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Contact.Message" class="form-label">Pesan</label>
+                        <textarea asp-for="Contact.Message" class="form-control" rows="4" placeholder="Tulis pesan Anda di sini..."></textarea>
+                        <span asp-validation-for="Contact.Message" class="text-danger small"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary px-4 py-2">
+                        <i class="fas fa-paper-plane me-2"></i>Kirim Pesan
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
